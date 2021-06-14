@@ -1,10 +1,12 @@
 class Game {
     constructor() {
         this.backgroundImages;
+        this.playerImage;
     }
 
     setup() {
         this.background = new Background();
+        this.player = new Player();
         this.obstacles = [];
     }
 
@@ -18,12 +20,20 @@ class Game {
             { src: loadImage('../game_background_3/layers/land.png'), x: 0, speed: 2},
             { src: loadImage('../game_background_3/layers/decor.png'), x: 0, speed: 2.0},
         ];
+        this.movingPlayerImages = [
+            { src: loadImage('../character/character_malePerson_run0.png')},
+            { src: loadImage('../character/character_malePerson_run1.png')},
+            { src: loadImage('../character/character_malePerson_run2.png')},
+        ];
+        // How to have this.playerImage = to 3 images that follow each
         // player image and coin image to be added
     }
 
     draw() {
         clear();
         this.background.draw();
-        // this.player.draw();
+        // this.player.toggle();
+        console.log(this.playerImage);
+        this.player.draw();
     }
 }
