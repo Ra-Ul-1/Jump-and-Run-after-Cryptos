@@ -13,3 +13,10 @@ function draw() {
     game.draw();
 }
 
+function keyPressed() {
+    // if you press on spacebar, jump
+    if (keyCode === 32) {
+        game.player.jump();
+    }
+}
+
