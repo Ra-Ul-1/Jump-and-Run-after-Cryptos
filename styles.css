@@ -1,0 +1,14 @@
+h1 {
+    font-family: Monaco;
+    display: flex;
+    justify-content: center;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Spartan", sans-serif;
+    background-color: #c8cbda; 
+}
