@@ -7,24 +7,19 @@ class Player {
         this.x = 0;
         this.y = height - 10 - this.height;
         // height is the height of the canvas
+        this.imageIndex = 0
     }
     toggle() {
-        for (let i = 0; i < game.movingPlayerImages.length; i++) {
-            if (i > game.movingPlayerImages.length - 1) { 
-                i = 0
-            }
-            else if (frameCount % 60 === 0) {
-                console.log("framecount 60")
-                game.playerImage = game.movingPlayerImages[i]
-            // Framecount p5
-            } 
-        }
+        if(frameCount % 9 === 0) {
+            // modulo is going to be 0, 1, 2 - 0, 1, 2 etc
+            this.imageIndex = (this.imageIndex + 1) % 3 
+        }     
     };
 
     draw() {
         console.log("drawing player")
         this.toggle();
-        image(game.playerImage.src, this.x, this.y, this.width, this.height);
+        image(game.movingPlayerImages[this.imageIndex].src, this.x, this.y, this.width, this.height);
         
     }
 }

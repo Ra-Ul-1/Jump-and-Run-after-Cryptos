@@ -1,7 +1,7 @@
 class Game {
     constructor() {
         this.backgroundImages;
-        this.playerImage;
+        this.movingPlayerImages;
     }
 
     setup() {
