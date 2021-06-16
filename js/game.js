@@ -91,8 +91,8 @@ class Game {
             noLoop()
             // Look up how to draw an image
             // might need to empty the coins array
-            let gameDivs = document.querySelectorAll("div:not(#over)");
-            gameDivs.style.visibility = 'hidden'
+            document.getElementById("canvas").style.visibility = 'hidden';
+            document.getElementById("over").style.visibility = 'visible';
         }
     }
 }

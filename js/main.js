@@ -1,6 +1,6 @@
 const game = new Game();
 
-document.getElementById("over").style.visibility = 'hidden';
+
 
 function preload () {
     game.preload();
@@ -9,6 +9,7 @@ function preload () {
 function setup() {
     let canvas = createCanvas(1152, 648);
     canvas.position(25, 100)
+    canvas.parent("canvas");
     game.setup();
 }
 
@@ -23,3 +24,4 @@ function keyPressed() {
     }
 }
 
+// document.getElementById("over").style.visibility = 'hidden';
