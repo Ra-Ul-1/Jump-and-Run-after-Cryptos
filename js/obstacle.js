@@ -10,8 +10,8 @@ class Obstacle{
         this.height = 100;
     }
     
-    collision(playerInfo) {
-        console.log('collision', playerInfo);
+    collectCoin(playerInfo) {
+        console.log('coin collected', playerInfo);
         // get the middle of the obstacle
         const obstacleX = this.x + this.width / 2;
         const obstacleY = this.y + this.height / 2;
@@ -25,6 +25,8 @@ class Obstacle{
         } else {
             // we have a collision
             // score should be incremented here
+            game.coinsCollected++
+            document.getElementById("score").innerText= game.coinsCollected;
             return true;
         }
     }
@@ -32,7 +34,7 @@ class Obstacle{
     draw() {
         // not sure what x-- means?
         // image.x -= image.speed;
-        this.x -= 2;
+        this.x -= 4;
         image(this.image, this.x, this.y, this.width, this.height);
     }
 }

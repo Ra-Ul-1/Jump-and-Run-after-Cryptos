@@ -3,12 +3,16 @@ class Game {
         this.backgroundImages;
         this.movingPlayerImages;
         this.obstacleIndex = 0;
+        this.villainImage;
     }
 
     setup() {
         this.background = new Background();
         this.player = new Player();
         this.obstacles = [];
+        this.coinsCollected = 0;
+        this.villains = [];
+        this.villainsCollided = 0;
     }
 
     preload() {
@@ -31,9 +35,7 @@ class Game {
             {src: loadImage('../coins/doge_logo.png')},
             {src: loadImage('../coins/ethereum_logo.png')},
         ];
-        this.coinImage = loadImage('../coins/bitcoin_logo.png')
-        // How to have this.playerImage = to 3 images that follow each
-        // player image and coin image to be added
+        this.villainImage = loadImage('../obstacles/angry_yeti copy 2.png');
     }
 
     draw() {
@@ -42,10 +44,11 @@ class Game {
         // this.player.toggle();
         // console.log(this.playerImage);
         this.player.draw();
+        // Empty array at this point
         console.log(this.obstacles)
         // let randomImage = this.coinImages[Math.floor(Math.random()) * 3]
         if(frameCount % 200 === 0) {
-            this.obstacleIndex = Math.floor(Math.random() * 3 ); 
+            this.obstacleIndex = Math.floor(Math.random() * 3 );
             console.log("coin is drawing")
             // don't forget .src!!
             this.obstacles.push(new Obstacle(this.coinImages[this.obstacleIndex].src));
@@ -58,11 +61,42 @@ class Game {
         })
         // we use array filter to remove coins that collide with the player from the array
         this.obstacles = this.obstacles.filter(obstacle => {
-            if (obstacle.collision(this.player || (obstacle.x + obstacle.width) < 85)) {
+            if (obstacle.collectCoin(this.player || (obstacle.x + obstacle.width) < 85)) {
                 return false;
             } else {
                 return true
             }
         })
+        // drawing villains
+        if(frameCount % 300   === 0) {
+            this.villains.push(new Villain (this.villainImage));
+            // console logs the villains array
+            console.log(this.villains);
+        }
+        // call draw function for each villain
+        this.villains.forEach(function (villain) {
+            villain.draw();
+        })
+        // we use array filter to remove villains that collide with the player from the array
+        // next: we add them to the villainsCollided array
+        this.villains = this.villains.filter (villain => {
+            if (villain.collision(this.player || (villain.x + villain.width) < 250)) {
+                return false;
+            } else {
+                return true
+            }
+        })
+        // end game logic
+        if (this.villainsCollided > 0) {
+            noLoop()
+            // Look up how to draw an image
+            // might need to empty the coins array
+            let gameDivs = document.querySelectorAll("div:not(#over)");
+            gameDivs.style.visibility = 'hidden'
+        }
     }
 }
+
+// no loop function will stop the draw function
+// score: can draw text and give it coordinates
+// when player touches villain - I can get the framecount and say this framecount + 5 you can load the other image
