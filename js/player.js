@@ -25,13 +25,13 @@ class Player {
         this.velocity += this.gravity;
         this.y += this.velocity;
         // making sure the player stays on the screen
-        if (this.y >= height - this.height - 30) {
+        if (this.y >= height - this.height - 10) {
             //  we reset y to its starting position
-            this.y = height - this.height - 30;
-            // small lag here, as it sticks to the top as long as y < 0
-        } if (this.y <= 0) {
-            this.y = 0
-        }
+            this.y = height - this.height - 10;
+            // small lag here, as it sticks to the top as long as y < -25 
+        } if (this.y <= -25) {
+            this.y = -25
+        } 
     }
         
         jump() {

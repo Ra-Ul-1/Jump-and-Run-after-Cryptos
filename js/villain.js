@@ -16,7 +16,7 @@ class Villain {
         const playerY = playerInfo.y + playerInfo.height / 2;
         // measure the distance between obstacle and player using the dist() function
         // also include the width of both player and villain (+- (160  + 200) /2)
-        if (dist(villainX, villainY, playerX, playerY) > 150) {
+        if (dist(villainX, villainY, playerX, playerY) > 160) {
             return false;
         } else {
             game.villainsCollided++;

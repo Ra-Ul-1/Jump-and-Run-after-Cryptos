@@ -5,6 +5,7 @@ class Game {
         this.obstacleIndex = 0;
         this.villainImage;
         this.song;
+        this.endTune;
     }
 
     setup() {
@@ -37,10 +38,12 @@ class Game {
         this.coinImages = [
             {src: loadImage('coins/bitcoin_logo.png')},
             {src: loadImage('coins/doge_logo.png')},
-            {src: loadImage('coins/ethereum_logo.png')},
+            {src: loadImage('coins/ethereum_logo2.png')},
         ];
         this.villainImage = loadImage('obstacles/angry_yeti copy 2.png');
         this.song = loadSound('sound/Dua_Lipa-Italo.mp3');
+        this.endTune = loadSound('sound/mixkit-arcade-retro-game-over-213.wav');
+        this.coinSound = loadSound('sound/mixkit-game-success-alert-2039.wav');
     }
 
 
@@ -69,6 +72,7 @@ class Game {
         // we use array filter to remove coins that collide with the player from the array
         this.obstacles = this.obstacles.filter(obstacle => {
             if (obstacle.collectCoin(this.player || (obstacle.x + obstacle.width) < 85)) {
+                this.coinSound.play()
                 return false;
             } else {
                 return true
@@ -100,7 +104,9 @@ class Game {
             // might need to empty the coins array
             document.getElementById("canvas").style.visibility = 'hidden';
             document.getElementById("over").style.visibility = 'visible';
+            document.getElementById("end-message").style.visibility = 'visible';
             this.song.stop()
+            this.endTune.play()
         }
     }
 } 
