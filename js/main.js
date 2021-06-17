@@ -24,4 +24,4 @@ function keyPressed() {
     }
 }
 
-// document.getElementById("over").style.visibility = 'hidden';
+document.getElementById("over").style.visibility = 'hidden';

@@ -15,12 +15,15 @@ class Game {
         this.villainsCollided = 0;
     }
 
+
     preload() {
         this.backgroundImages = [
             // It does not matter at which speed sky moves
             // Best practice is to use relative path: works locally and anywhere else
+            // missing sea
             { src: loadImage('game_background_3/layers/sky.png'), x: 0, speed: 0},
             { src: loadImage('game_background_3/layers/sun.png'), x: 0, speed: 1},
+            { src: loadImage('../game_background_3/layers/sea.png'), x: 0, speed: 1},
             { src: loadImage('game_background_3/layers/cloud.png'), x: 0, speed: 1},
             { src: loadImage('game_background_3/layers/land.png'), x: 0, speed: 2},
             { src: loadImage('game_background_3/layers/decor.png'), x: 0, speed: 2.0},
