@@ -26,7 +26,7 @@ class Villain {
     }
     
     draw() {
-        this.x -= 5;
+        this.x -= 6;
         console.log("drawing villain")
         image(this.image, this.x, this.y, this.width, this.height);
     }

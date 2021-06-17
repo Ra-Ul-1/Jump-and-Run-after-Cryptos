@@ -34,7 +34,7 @@ class Obstacle{
     draw() {
         // not sure what x-- means?
         // image.x -= image.speed;
-        this.x -= 5;
+        this.x -= 6;
         image(this.image, this.x, this.y, this.width, this.height);
     }
 }
