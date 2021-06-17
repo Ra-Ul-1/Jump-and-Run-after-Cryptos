@@ -4,6 +4,7 @@ class Game {
         this.movingPlayerImages;
         this.obstacleIndex = 0;
         this.villainImage;
+        this.song;
     }
 
     setup() {
@@ -39,6 +40,7 @@ class Game {
             {src: loadImage('coins/ethereum_logo.png')},
         ];
         this.villainImage = loadImage('obstacles/angry_yeti copy 2.png');
+        this.song = loadSound('sound/01-12.00-(Original-Mix).mp3');
     }
 
     draw() {
@@ -47,6 +49,7 @@ class Game {
         // this.player.toggle();
         // console.log(this.playerImage);
         this.player.draw();
+        this.song.play();
         // Empty array at this point
         console.log(this.obstacles)
         // let randomImage = this.coinImages[Math.floor(Math.random()) * 3]
