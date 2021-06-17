@@ -21,10 +21,9 @@ class Game {
         this.backgroundImages = [
             // It does not matter at which speed sky moves
             // Best practice is to use relative path: works locally and anywhere else
-            // missing sea
             { src: loadImage('game_background_3/layers/sky.png'), x: 0, speed: 0},
             { src: loadImage('game_background_3/layers/sun.png'), x: 0, speed: 1},
-            { src: loadImage('../game_background_3/layers/sea.png'), x: 0, speed: 1},
+            { src: loadImage('game_background_3/layers/sea.png'), x: 0, speed: 1},
             { src: loadImage('game_background_3/layers/cloud.png'), x: 0, speed: 1},
             { src: loadImage('game_background_3/layers/land.png'), x: 0, speed: 2},
             { src: loadImage('game_background_3/layers/decor.png'), x: 0, speed: 2.0},
@@ -33,6 +32,7 @@ class Game {
             { src: loadImage('character/character_malePerson_run0.png')},
             { src: loadImage('character/character_malePerson_run1.png')},
             { src: loadImage('character/character_malePerson_run2.png')},
+            { src: loadImage('character/character_malePerson_attackKick.png')}
         ];
         this.coinImages = [
             {src: loadImage('coins/bitcoin_logo.png')},
@@ -40,8 +40,9 @@ class Game {
             {src: loadImage('coins/ethereum_logo.png')},
         ];
         this.villainImage = loadImage('obstacles/angry_yeti copy 2.png');
-        this.song = loadSound('sound/01-12.00-(Original-Mix).mp3');
+        this.song = loadSound('sound/Dua_Lipa-Italo.mp3');
     }
+
 
     draw() {
         clear();
@@ -49,7 +50,7 @@ class Game {
         // this.player.toggle();
         // console.log(this.playerImage);
         this.player.draw();
-        this.song.play();
+        if (frameCount === 1) this.song.play()
         // Empty array at this point
         console.log(this.obstacles)
         // let randomImage = this.coinImages[Math.floor(Math.random()) * 3]
@@ -99,9 +100,12 @@ class Game {
             // might need to empty the coins array
             document.getElementById("canvas").style.visibility = 'hidden';
             document.getElementById("over").style.visibility = 'visible';
+            this.song.stop()
         }
     }
-}
+} 
+
+
 
 // no loop function will stop the draw function
 // score: can draw text and give it coordinates

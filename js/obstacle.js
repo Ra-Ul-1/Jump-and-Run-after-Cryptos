@@ -20,7 +20,7 @@ class Obstacle{
         const playerY = playerInfo.y + playerInfo.height / 2;
         // measure the distance between obstacle and player using the dist() function
         // also include the width of both player and coin (+- 120 /2 amd 50 / 2 = 85)
-        if (dist(obstacleX, obstacleY, playerX, playerY) > 85) {
+        if (dist(obstacleX, obstacleY, playerX, playerY) > 120) {
             return false;
         } else {
             // we have a collision
@@ -34,7 +34,7 @@ class Obstacle{
     draw() {
         // not sure what x-- means?
         // image.x -= image.speed;
-        this.x -= 4;
+        this.x -= 5;
         image(this.image, this.x, this.y, this.width, this.height);
     }
 }
